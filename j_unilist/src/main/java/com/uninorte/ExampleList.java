@@ -5,24 +5,35 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class ExampleList implements List{
+public class ExampleList implements List {
+    private Node head;
+    private int size;
+
+    public ExampleList() {
+        this.head = null;
+        this.size = 0;
+    }
 
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'size'");
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
+        return size == 0;
     }
 
     @Override
     public boolean contains(Object o) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contains'");
+        Node current = head;
+        while (current != null) {
+            if ((o == null && current.getData() == null) || (o != null && o.equals(current.getData()))) {
+                return true;
+            }
+            current = current.getNextNode();
+        }
+        return false;
     }
 
     @Override
@@ -44,15 +55,44 @@ public class ExampleList implements List{
     }
 
     @Override
-    public boolean add(Object e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'add'");
+    public boolean add(Object o) {
+        Node newNode = new Node(size, o);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.getNextNode() != null) {
+                current = current.getNextNode();
+            }
+            current.setNextNode(newNode);
+        }
+        size++;
+        return true;
     }
 
     @Override
     public boolean remove(Object o) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'remove'");
+        if (head == null) {
+            return false;
+        }
+
+        if ((o == null && head.getData() == null) || (o != null && o.equals(head.getData()))) {
+            head = head.getNextNode();
+            size--;
+            return true;
+        }
+
+        Node current = head;
+        while (current.getNextNode() != null) {
+            if ((o == null && current.getNextNode().getData() == null) || (o != null && o.equals(current.getNextNode().getData()))) {
+                current.setNextNode(current.getNextNode().getNextNode());
+                size--;
+                return true;
+            }
+            current = current.getNextNode();
+        }
+
+        return false;
     }
 
     @Override
@@ -144,5 +184,20 @@ public class ExampleList implements List{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'subList'");
     }
-    
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        Node current = head;
+        while (current != null) {
+            sb.append(current.getData());
+            if (current.getNextNode() != null) {
+                sb.append(", ");
+            }
+            current = current.getNextNode();
+        }
+        sb.append("]");
+        return sb.toString();
+    }
 }
