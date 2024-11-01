@@ -1,11 +1,12 @@
 package com.uninorte;
 
+import java.util.AbstractList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class ExampleList implements List{
+public class ProfeList<E> extends AbstractList<E> implements List<E>{
 
     @Override
     public int size() {
@@ -91,11 +92,7 @@ public class ExampleList implements List{
         throw new UnsupportedOperationException("Unimplemented method 'clear'");
     }
 
-    @Override
-    public Object get(int index) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'get'");
-    }
+
 
     @Override
     public Object set(int index, Object element) {
@@ -109,11 +106,6 @@ public class ExampleList implements List{
         throw new UnsupportedOperationException("Unimplemented method 'add'");
     }
 
-    @Override
-    public Object remove(int index) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'remove'");
-    }
 
     @Override
     public int indexOf(Object o) {
@@ -143,6 +135,12 @@ public class ExampleList implements List{
     public List subList(int fromIndex, int toIndex) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'subList'");
+    }
+
+    @Override
+    public E get(int index) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'get'");
     }
     
 }
