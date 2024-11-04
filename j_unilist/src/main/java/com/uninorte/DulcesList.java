@@ -69,7 +69,7 @@ public class DulcesList implements List<Object> {
             current = current.getNextNode();
         }
         if (a.length > size) {
-            a[size] = null; // Null-terminating
+            a[size] = null;
         }
         return a;
     }
