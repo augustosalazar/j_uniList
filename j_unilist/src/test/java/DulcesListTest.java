@@ -2,16 +2,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import com.uninorte.ProfeList;
+import com.uninorte.DulcesList;
 
-public class ProfeListTest {
+public class DulcesListTest {
     
-    // create all test for the profeList class
+    // create all test for the DulcesList class
 
     // test the add method
     @Test
     public void testAdd() {
-        ProfeList<Integer> list = new ProfeList<>();
+        DulcesList list = new DulcesList();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -21,7 +21,7 @@ public class ProfeListTest {
     // test the get method
     @Test
     public void testGet() {
-        ProfeList<Integer> list = new ProfeList<>();
+        DulcesList list = new DulcesList();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -31,7 +31,7 @@ public class ProfeListTest {
     // test the remove method
     @Test
     public void testRemove() {
-        ProfeList<Integer> list = new ProfeList<>();
+        DulcesList list = new DulcesList();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -42,7 +42,7 @@ public class ProfeListTest {
     // test the size method
     @Test
     public void testSize() {
-        ProfeList<Integer> list = new ProfeList<>();
+        DulcesList list = new DulcesList();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -52,7 +52,7 @@ public class ProfeListTest {
     // test the clear method
     @Test
     public void testClear() {
-        ProfeList<Integer> list = new ProfeList<>();
+        DulcesList list = new DulcesList();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -63,14 +63,14 @@ public class ProfeListTest {
     // test the isEmpty method
     @Test
     public void testIsEmpty() {
-        ProfeList<Integer> list = new ProfeList<>();
+        DulcesList list = new DulcesList();
         assertEquals(true, list.isEmpty());
     }
 
     // test the contains method
     @Test
     public void testContains() {
-        ProfeList<Integer> list = new ProfeList<>();
+        DulcesList list = new DulcesList();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -80,7 +80,7 @@ public class ProfeListTest {
     // test the indexOf method
     @Test
     public void testIndexOf() {
-        ProfeList<Integer> list = new ProfeList<>();
+        DulcesList list = new DulcesList();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -90,7 +90,7 @@ public class ProfeListTest {
     // test the lastIndexOf method
     @Test
     public void testLastIndexOf() {
-        ProfeList<Integer> list = new ProfeList<>();
+        DulcesList list = new DulcesList();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -103,8 +103,8 @@ public class ProfeListTest {
     // test the addAll method
     @Test
     public void testAddAll() {
-        ProfeList<Integer> list = new ProfeList<>();
-        ProfeList<Integer> list2 = new ProfeList<>();
+        DulcesList list = new DulcesList();
+        DulcesList list2 = new DulcesList();
         list2.add(1);
         list2.add(2);
         list2.add(3);
@@ -116,8 +116,8 @@ public class ProfeListTest {
     // test the addAll method with index
     @Test
     public void testAddAllIndex() {
-        ProfeList<Integer> list = new ProfeList<>();
-        ProfeList<Integer> list2 = new ProfeList<>();
+        DulcesList list = new DulcesList();
+        DulcesList list2 = new DulcesList();
         list2.add(1);
         list2.add(2);
         list2.add(3);
@@ -128,7 +128,7 @@ public class ProfeListTest {
     // test the set method
     @Test
     public void testSet() {
-        ProfeList<Integer> list = new ProfeList<>();
+        DulcesList list = new DulcesList();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -139,7 +139,7 @@ public class ProfeListTest {
     // test the remove with index method
     @Test
     public void testRemoveIndex() {
-        ProfeList<Integer> list = new ProfeList<>();
+        DulcesList list = new DulcesList();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -150,7 +150,7 @@ public class ProfeListTest {
     // test the remove with object method
     @Test
     public void testRemoveObject() {
-        ProfeList<Integer> list = new ProfeList<>();
+        DulcesList list = new DulcesList();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -161,8 +161,8 @@ public class ProfeListTest {
     // test the removeAll method
     @Test
     public void testRemoveAll() {
-        ProfeList<Integer> list = new ProfeList<>();
-        ProfeList<Integer> list2 = new ProfeList<>();
+        DulcesList list = new DulcesList();
+        DulcesList list2 = new DulcesList();
         list2.add(1);
         list2.add(2);
         list2.add(3);
@@ -176,8 +176,8 @@ public class ProfeListTest {
     // test the retainAll method
     @Test
     public void testRetainAll() {
-        ProfeList<Integer> list = new ProfeList<>();
-        ProfeList<Integer> list2 = new ProfeList<>();
+        DulcesList list = new DulcesList();
+        DulcesList list2 = new DulcesList();
         list2.add(1);
         list2.add(2);
         list2.add(3);
@@ -192,8 +192,8 @@ public class ProfeListTest {
     // test the containsAll method
     @Test
     public void testContainsAll() {
-        ProfeList<Integer> list = new ProfeList<>();
-        ProfeList<Integer> list2 = new ProfeList<>();
+        DulcesList list = new DulcesList();
+        DulcesList list2 = new DulcesList();
         list2.add(1);
         list2.add(2);
         list2.add(3);
@@ -206,11 +206,11 @@ public class ProfeListTest {
     // test the subList method
     @Test
     public void testSubList() {
-        ProfeList<Integer> list = new ProfeList<>();
+        DulcesList list = new DulcesList();
         list.add(1);
         list.add(2);
         list.add(3);
-        ProfeList<Integer> list2 = (ProfeList<Integer>) list.subList(0, 2);
+        DulcesList list2 = (DulcesList) list.subList(0, 2);
         assertEquals(2, list2.size());
     }
 
