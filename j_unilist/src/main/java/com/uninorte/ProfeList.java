@@ -28,8 +28,20 @@ public class ProfeList<E> extends AbstractList<E> implements List<E>{
 
     @Override
     public Iterator iterator() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'iterator'");
+        return new Iterator<E>(){
+            Node current = head;
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public E next() {
+                E data = (E) current.getData();
+                current = current.getNextNode();
+                return data;
+            }
+        };
     }
 
     @Override
