@@ -18,6 +18,26 @@ public class ProfeList<T> implements List<T> {
         return list.add(element);
     }
 
- 
+    @Override
+    public void add(int index, T element) {
+        list.add(index, element);
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends T> c) {
+        return list.addAll(c);
+    }
+
+    @Override
+    public boolean addAll(int index, Collection<? extends T> c) {
+        return list.addAll(index, c);
+    }
+
+    @Override
+    public void clear() {
+        list.clear();
+    }
+
+   
 }
 
