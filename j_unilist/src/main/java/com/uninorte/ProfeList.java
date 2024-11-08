@@ -58,4 +58,39 @@ public class ProfeList<T> implements List<T> {
         return list.indexOf(o);
     }
 
+    @Override
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
 
+    @Override
+    public Iterator<T> iterator() {
+        return list.iterator();
+    }
+
+    @Override
+    public int lastIndexOf(Object o) {
+        return list.lastIndexOf(o);
+    }
+
+    @Override
+    public ListIterator<T> listIterator() {
+        return list.listIterator();
+    }
+
+    @Override
+    public ListIterator<T> listIterator(int index) {
+        return list.listIterator(index);
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        return list.remove(o);
+    }
+
+    @Override
+    public T remove(int index) {
+        return list.remove(index);
+    }
+
+   
