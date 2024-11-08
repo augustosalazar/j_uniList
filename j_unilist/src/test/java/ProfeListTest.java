@@ -31,11 +31,11 @@ public class ProfeListTest {
     // test the remove method
     @Test
     public void testRemove() {
-        ProfeList<Integer> list = new ProfeList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.remove(1);
+        ProfeList<String> list = new ProfeList<>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.remove("1");
         assertEquals(2, list.size());
     }
 
