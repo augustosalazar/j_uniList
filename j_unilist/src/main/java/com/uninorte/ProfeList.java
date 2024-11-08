@@ -2,11 +2,9 @@ package com.uninorte;
 
 import java.util.AbstractList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
-public class ProfeList<E> extends AbstractList<E> implements List<E>{
+public class ProfeList<E> extends AbstractList<E>{
 
     @Override
     public int size() {
@@ -24,24 +22,6 @@ public class ProfeList<E> extends AbstractList<E> implements List<E>{
     public boolean contains(Object o) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'contains'");
-    }
-
-    @Override
-    public Iterator iterator() {
-        return new Iterator<E>(){
-            Node current = head;
-            @Override
-            public boolean hasNext() {
-                return current != null;
-            }
-
-            @Override
-            public E next() {
-                E data = (E) current.getData();
-                current = current.getNextNode();
-                return data;
-            }
-        };
     }
 
     @Override
@@ -129,18 +109,6 @@ public class ProfeList<E> extends AbstractList<E> implements List<E>{
     public int lastIndexOf(Object o) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'lastIndexOf'");
-    }
-
-    @Override
-    public ListIterator listIterator() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listIterator'");
-    }
-
-    @Override
-    public ListIterator listIterator(int index) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listIterator'");
     }
 
     @Override
