@@ -34,4 +34,10 @@ public class Node {
     public void setNextNode(Node node){
         this.nextNode = node;
     }
+
+    public void setData(int index, Object element) {
+        
+        //throw new UnsupportedOperationException("Unimplemented method 'setData'");
+        this.data = element;
+    }
 }

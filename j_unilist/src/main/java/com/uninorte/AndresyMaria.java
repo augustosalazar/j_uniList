@@ -2,13 +2,14 @@ package com.uninorte;
 
 import java.util.AbstractList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class AndresyMaria<E> extends AbstractList<E>  {
+public class AndresyMaria<E> extends AbstractList<E> {
     private Node head;
-    
+
     @Override
     public int size() {
         int count = 0;
@@ -39,8 +40,21 @@ public class AndresyMaria<E> extends AbstractList<E>  {
 
     @Override
     public Iterator iterator() {
-        //
-        throw new UnsupportedOperationException("Unimplemented method 'iterator'");
+        return new Iterator<E>() {
+            Node current = head;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public E next() {
+                E data = (E) current.getData();
+                current = current.getNextNode();
+                return data;
+            }
+        };
     }
 
     @Override
@@ -122,16 +136,23 @@ public class AndresyMaria<E> extends AbstractList<E>  {
     @Override
     public boolean addAll(Collection c) {
         boolean modified = false;
-        for (Object item : c) {
-            add(item);
+        for (Object iterator : c) {
+            add(iterator);
             modified = true;
         }
         return modified;
+
     }
 
     @Override
     public boolean addAll(int index, Collection c) {
-        throw new UnsupportedOperationException("Unimplemented method 'addAll'");
+        // throw new UnsupportedOperationException("Unimplemented method 'addAll'");
+        boolean modified = false;
+        for (Object iterator : c) {
+            add(index, iterator);
+            modified = true;
+        }
+        return modified;
     }
 
     @Override
@@ -181,18 +202,25 @@ public class AndresyMaria<E> extends AbstractList<E>  {
     @Override
     public E set(int index, Object element) {
 
-        throw new UnsupportedOperationException();
+        // throw new UnsupportedOperationException();
 
-        // if (index < 0 || index >= size()) {
-        //     throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size());
-        // }
-        // Node current = head;
-        // for (int i = 0; i < index; i++) {
-        //     current = current.getNextNode();
-        // }
-        // Object oldData = current.getData();
-        // current.setData(element);
-        // return oldData;
+        if (index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size());
+        }
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.getNextNode();
+        }
+
+        E oldData = (E) current.getData();
+
+        System.out.println("data before set is " + current.getData());
+
+        current.setData(index, element);
+
+        System.out.println("data after set is " + current.getData());
+
+        return oldData;
     }
 
     @Override
@@ -223,33 +251,34 @@ public class AndresyMaria<E> extends AbstractList<E>  {
 
     @Override
     public E remove(int index) {
-        throw new UnsupportedOperationException();
-        // if (index < 0 || index >= size()) {
-        //     throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size());
-        // }
-        // Node current = head;
-        // if (index == 0) {
-        //     Object data = head.getData();
-        //     head = head.getNextNode();
-        //     if (head != null) {
-        //         head.setPrevNode(null);
-        //     }
-        //     return data;
-        // } else {
-        //     for (int i = 0; i < index; i++) {
-        //         current = current.getNextNode();
-        //     }
-        //     Object data = current.getData();
-        //     Node prevNode = current.getPrevNode();
-        //     Node nextNode = current.getNextNode();
-        //     if (prevNode != null) {
-        //         prevNode.setNextNode(nextNode);
-        //     }
-        //     if (nextNode != null) {
-        //         nextNode.setPrevNode(prevNode);
-        //     }
-        //     return data;
-       // }
+        // throw new UnsupportedOperationException();
+
+        if (index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size());
+        }
+        Node current = head;
+        if (index == 0) {
+            Object data = head.getData();
+            head = head.getNextNode();
+            if (head != null) {
+                head.setPrevNode(null);
+            }
+            return (E) data;
+        } else {
+            for (int i = 0; i < index; i++) {
+                current = current.getNextNode();
+            }
+            Object data = current.getData();
+            Node prevNode = current.getPrevNode();
+            Node nextNode = current.getNextNode();
+            if (prevNode != null) {
+                prevNode.setNextNode(nextNode);
+            }
+            if (nextNode != null) {
+                nextNode.setPrevNode(prevNode);
+            }
+            return (E) data;
+        }
     }
 
     @Override
@@ -280,6 +309,30 @@ public class AndresyMaria<E> extends AbstractList<E>  {
         }
         return index;
     }
+    @Override
+    public List<E> subList(int fromIndex, int toIndex) {
+
+        if (fromIndex < 0 || toIndex > size() || fromIndex > toIndex) {
+            throw new IndexOutOfBoundsException("Invalid indices: fromIndex=" + fromIndex + ", toIndex=" + toIndex);
+        }
+
+        List<E> subList = new AndresyMaria<>();
+        Node current = head;
+        int currentIndex = 0;
+
+        while (currentIndex < fromIndex) {
+            current = current.getNextNode();
+            currentIndex++;
+        }
+
+        while (currentIndex < toIndex) {
+            subList.add((E) current.getData());
+            current = current.getNextNode();
+            currentIndex++;
+        }
+
+        return subList;
+    }
 
     @Override
     public ListIterator listIterator() {
@@ -291,8 +344,5 @@ public class AndresyMaria<E> extends AbstractList<E>  {
         throw new UnsupportedOperationException("Unimplemented method 'listIterator'");
     }
 
-    @Override
-    public List subList(int fromIndex, int toIndex) {
-        throw new UnsupportedOperationException("Unimplemented method 'subList'");
-    }
+   
 }
