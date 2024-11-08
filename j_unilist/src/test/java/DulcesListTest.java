@@ -1,5 +1,7 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import com.uninorte.DulcesList;
@@ -11,7 +13,7 @@ public class DulcesListTest {
     // test the add method
     @Test
     public void testAdd() {
-        DulcesList list = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -21,7 +23,7 @@ public class DulcesListTest {
     // test the get method
     @Test
     public void testGet() {
-        DulcesList list = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -31,7 +33,7 @@ public class DulcesListTest {
     // test the remove method
     @Test
     public void testRemove() {
-        DulcesList list = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -42,7 +44,7 @@ public class DulcesListTest {
     // test the size method
     @Test
     public void testSize() {
-        DulcesList list = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -52,7 +54,7 @@ public class DulcesListTest {
     // test the clear method
     @Test
     public void testClear() {
-        DulcesList list = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -63,14 +65,14 @@ public class DulcesListTest {
     // test the isEmpty method
     @Test
     public void testIsEmpty() {
-        DulcesList list = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
         assertEquals(true, list.isEmpty());
     }
 
     // test the contains method
     @Test
     public void testContains() {
-        DulcesList list = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -80,7 +82,7 @@ public class DulcesListTest {
     // test the indexOf method
     @Test
     public void testIndexOf() {
-        DulcesList list = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -90,7 +92,7 @@ public class DulcesListTest {
     // test the lastIndexOf method
     @Test
     public void testLastIndexOf() {
-        DulcesList list = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -103,12 +105,13 @@ public class DulcesListTest {
     // test the addAll method
     @Test
     public void testAddAll() {
-        DulcesList list = new DulcesList();
-        DulcesList list2 = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
+        DulcesList<Integer> list2 = new DulcesList<>();
         list2.add(1);
         list2.add(2);
         list2.add(3);
-        list.addAll(list2);
+        assertEquals(3, list2.size());
+        assertEquals(true, list.addAll(list2));
         assertEquals(3, list.size());
     }
 
@@ -116,8 +119,8 @@ public class DulcesListTest {
     // test the addAll method with index
     @Test
     public void testAddAllIndex() {
-        DulcesList list = new DulcesList();
-        DulcesList list2 = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
+        DulcesList<Integer> list2 = new DulcesList<>();
         list2.add(1);
         list2.add(2);
         list2.add(3);
@@ -128,7 +131,7 @@ public class DulcesListTest {
     // test the set method
     @Test
     public void testSet() {
-        DulcesList list = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -139,7 +142,7 @@ public class DulcesListTest {
     // test the remove with index method
     @Test
     public void testRemoveIndex() {
-        DulcesList list = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -150,7 +153,7 @@ public class DulcesListTest {
     // test the remove with object method
     @Test
     public void testRemoveObject() {
-        DulcesList list = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -161,8 +164,8 @@ public class DulcesListTest {
     // test the removeAll method
     @Test
     public void testRemoveAll() {
-        DulcesList list = new DulcesList();
-        DulcesList list2 = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
+        DulcesList<Integer> list2 = new DulcesList<>();
         list2.add(1);
         list2.add(2);
         list2.add(3);
@@ -176,8 +179,8 @@ public class DulcesListTest {
     // test the retainAll method
     @Test
     public void testRetainAll() {
-        DulcesList list = new DulcesList();
-        DulcesList list2 = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
+        DulcesList<Integer> list2 = new DulcesList<>();
         list2.add(1);
         list2.add(2);
         list2.add(3);
@@ -192,8 +195,8 @@ public class DulcesListTest {
     // test the containsAll method
     @Test
     public void testContainsAll() {
-        DulcesList list = new DulcesList();
-        DulcesList list2 = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
+        DulcesList<Integer> list2 = new DulcesList<>();
         list2.add(1);
         list2.add(2);
         list2.add(3);
@@ -206,11 +209,11 @@ public class DulcesListTest {
     // test the subList method
     @Test
     public void testSubList() {
-        DulcesList list = new DulcesList();
+        DulcesList<Integer> list = new DulcesList<>();
         list.add(1);
         list.add(2);
         list.add(3);
-        DulcesList list2 = (DulcesList) list.subList(0, 2);
+        DulcesList<Integer> list2 = (DulcesList<Integer>) list.subList(0, 2);
         assertEquals(2, list2.size());
     }
 
