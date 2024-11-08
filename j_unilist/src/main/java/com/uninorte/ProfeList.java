@@ -38,6 +38,24 @@ public class ProfeList<T> implements List<T> {
         list.clear();
     }
 
-   
-}
+    @Override
+    public boolean contains(Object o) {
+        return list.contains(o);
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        return list.containsAll(c);
+    }
+
+    @Override
+    public T get(int index) {
+        return list.get(index);
+    }
+
+    @Override
+    public int indexOf(Object o) {
+        return list.indexOf(o);
+    }
+
 
