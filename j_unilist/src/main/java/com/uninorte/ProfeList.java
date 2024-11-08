@@ -131,9 +131,19 @@ public class ProfeList<E> extends AbstractList<E> implements List<E>{
     }
 
     @Override
-    public boolean addAll(int index, Collection c) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addAll'");
+    public boolean addAll(int index, Collection c) {    
+        Node aux = ((ProfeList) c).getPTR();
+        int contador = 0;
+        while (aux != null) {
+            if(contador < index){
+                aux = aux.getNextNode();
+                contador++;
+            } else{
+                this.add(aux);
+                aux = aux.getNextNode();
+            }
+        }
+        return true;
     }
 
     @Override
