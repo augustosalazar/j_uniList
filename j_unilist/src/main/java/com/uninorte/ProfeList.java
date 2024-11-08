@@ -93,4 +93,52 @@ public class ProfeList<T> implements List<T> {
         return list.remove(index);
     }
 
-   
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        return list.removeAll(c);
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        return list.retainAll(c);
+    }
+
+    @Override
+    public T set(int index, T element) {
+        return list.set(index, element);
+    }
+
+    @Override
+    public int size() {
+        return list.size();
+    }
+
+    @Override
+    public ProfeList<T> subList(int fromIndex, int toIndex) {
+        ProfeList<T> subList = new ProfeList<>();
+        for (int i = fromIndex; i < toIndex; i++) {
+            subList.add(this.get(i));  
+        }
+        return subList;
+    }
+
+    @Override
+    public Object[] toArray() {
+        return list.toArray();
+    }
+
+    @Override
+    public <U> U[] toArray(U[] a) {
+        return list.toArray(a);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return list.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return list.hashCode();
+    }
+}
