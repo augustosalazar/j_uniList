@@ -1,11 +1,11 @@
 package com.uninorte;
 
+import java.util.AbstractList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
-public class DulcesList implements List<Object> {
+public class DulcesList<E> extends AbstractList<E> {
     private Node head;
     private Node tail;
     private int size;
@@ -40,11 +40,8 @@ public class DulcesList implements List<Object> {
         return false;
     }
 
-    @Override
-    public Iterator<Object> iterator() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'iterator'");
-    }
+
+
 
     @Override
     public Object[] toArray() {
@@ -114,10 +111,12 @@ public class DulcesList implements List<Object> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends Object> c) {
+    public boolean addAll(Collection c) {
         boolean modified = false;
+        System.out.println("size of c "+c.size());
         for (Object obj : c) {
-            if (add(obj)) {
+            System.out.println(obj);
+            if (this.add(obj)) {
                 modified = true;
             }
         }
@@ -125,7 +124,7 @@ public class DulcesList implements List<Object> {
     }
 
     @Override
-    public boolean addAll(int index, Collection<? extends Object> c) {
+    public boolean addAll(int index, Collection c) {
         for (Object obj : c) {
             add(index++, obj);
         }
@@ -165,7 +164,7 @@ public class DulcesList implements List<Object> {
     }
 
     @Override
-    public Object get(int index) {
+    public E get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
@@ -173,7 +172,7 @@ public class DulcesList implements List<Object> {
         for (int i = 0; i < index; i++) {
             current = current.getNextNode();
         }
-        return current.getData();
+        return (E) current.getData();
     }
 
     @Override
@@ -186,6 +185,7 @@ public class DulcesList implements List<Object> {
             current = current.getNextNode();
         }
         Object oldData = current.getData();
+        current.setData(element);
         return oldData;
     }
 
@@ -208,7 +208,7 @@ public class DulcesList implements List<Object> {
     }
 
     @Override
-    public Object remove(int index) {
+    public E remove(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
@@ -222,7 +222,7 @@ public class DulcesList implements List<Object> {
         prev.setNextNode(next);
         next.setPrevNode(prev);
         size--;
-        return data;
+        return (E) data;
     }
 
     @Override
@@ -253,22 +253,8 @@ public class DulcesList implements List<Object> {
         return -1;
     }
 
-    @Override
-    public ListIterator<Object> listIterator() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listIterator'");
-    }
+  
 
-    @Override
-    public ListIterator<Object> listIterator(int index) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listIterator'");
-    }
 
-    @Override
-    public List<Object> subList(int fromIndex, int toIndex) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'subList'");
-    }
 
 }
