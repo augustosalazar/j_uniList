@@ -1,6 +1,7 @@
 package com.uninorte;
 
 import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -50,12 +51,6 @@ public class ProfeList<E> extends AbstractList<E> implements List<E>{
             aux = aux.getNextNode();
         }
         return false;
-    }
-
-    @Override
-    public Iterator iterator() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'iterator'");
     }
 
     @Override
@@ -116,8 +111,24 @@ public class ProfeList<E> extends AbstractList<E> implements List<E>{
 
     @Override
     public boolean containsAll(Collection c) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'containsAll'");
+        Node aux = ((ProfeList) c).getPTR();
+
+        while (aux != null) {
+            Node thisAux = this.PTR;
+            boolean encontrado = false;
+            while (thisAux != null) {
+                if(thisAux.getData() == aux.getData()){
+                    encontrado = true;
+                    break;
+                }
+                thisAux = thisAux.getNextNode();
+            }
+            if(encontrado == false){
+                return false;
+            }
+            aux = aux.getNextNode();
+        }
+        return true;
     }
 
     @Override
@@ -145,13 +156,11 @@ public class ProfeList<E> extends AbstractList<E> implements List<E>{
         }
         return true;
     }
-
     @Override
     public boolean removeAll(Collection c) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeAll'");
+        return false;
     }
-
+    
     @Override
     public boolean retainAll(Collection c) {
         // TODO Auto-generated method stub
@@ -168,8 +177,19 @@ public class ProfeList<E> extends AbstractList<E> implements List<E>{
 
     @Override
     public Object set(int index, Object element) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'set'");
+       Node nodo = new Node(element);
+       Node aux = this.PTR;
+       int contador = 0;
+       while (contador != index) {
+        aux = aux.getNextNode();
+        contador++;
+       }
+       aux.getPrevNode().setNextNode(nodo);
+       nodo.setPrevNode(aux.getPrevNode());
+       aux.setPrevNode(nodo);
+       nodo.setNextNode(aux);
+       
+       return nodo;
     }
 
     @Override
@@ -227,8 +247,24 @@ public class ProfeList<E> extends AbstractList<E> implements List<E>{
 
     @Override
     public List subList(int fromIndex, int toIndex) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'subList'");
+        int contadorInicial = 0;
+        Node aux = this.PTR;
+        ProfeList lista = new ProfeList<>(); 
+        while(contadorInicial != fromIndex){
+            aux = aux.getNextNode();
+            contadorInicial++;
+        }
+        int contadorFinal = contadorInicial;
+        Node auxFinal = aux;
+        while (contadorFinal != toIndex) {
+            auxFinal = auxFinal.getNextNode();
+            contadorFinal++;
+        }
+        while (aux != auxFinal) {
+            lista.add(aux);
+            aux = aux.getNextNode();
+        }
+        return lista;
     }
 
     @Override
