@@ -379,11 +379,11 @@ public class ProfeListCS<E> extends AbstractList<E> {
             for (int i = 0; i <= index; i++) {
                 actual = actual.getNextNode();
                 if (i == index) {
-                    actual = actual.getNextNode();// El nodo actual va a apuntar al siguiente nodo
+                    actual = actual.getNextNode();
                     l = actual.getNextNode();
-                    l = node;// Y ese siguiente nodo dirije el puntero al nuevo nodo
-                    node = node.getPrevNode();// El nodo nuevo al nodo anterior
-                    node = actual;// El nodo que ahora es el anterior va al nodo llamado "actual" original.
+                    l = node;
+                    node = node.getPrevNode();
+                    node = actual;
                 }
             }
         }
