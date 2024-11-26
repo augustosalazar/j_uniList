@@ -12,6 +12,7 @@ public class ExampleList implements List {
     public ExampleList() {
         this.head = null;
         this.size = 0;
+        
     }
 
     @Override
